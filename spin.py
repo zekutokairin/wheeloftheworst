@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import platform
 
-WINPATH = "C:\\Users\\user\\apps\\SuperVHS_v1.2-win"
-MACPATH = "/Users/user/Games/SuperVHS_v1.2-mac/SuperVHS.app"
+from config import *
+
+BAKPATH = None
 
 if platform.system() == "Darwin":
     MOVIEPATH = os.path.join("Contents","UE4","SuperVHS","Content","Movies")
@@ -17,30 +19,26 @@ elif platform.system() == "Windows":
 else:
     raise Exception("Unsupported OS: %s" % platform.system())
 
-if not os.path.exists(os.path.join(PATH,"backup")):
-    # TODO: Create it
+
+BAKPATH = os.path.join(PATH, "backup")
+if not os.path.exists(BAKPATH):
+    os.mkdir(BAKPATH)
     # TODO: Move movies over
     raise NotImplementedError
 
-import code
-#code.interact(local=locals())
+# Takes a list of full paths to movie files
+# Copies up to 14 of them into the SuperVHS movie folder
+def spinTheWheel(movie_entries):
+    for entry in movie_entries:
+        # TODO cp entry
+        pass
 
-MOVIES = ["RLMTV_DD1.mov",
-"RLMTV_DD2.mov",
-"RLMTV_FF1.mov",
-"RLMTV_FF2.mov",
-"RLMTV_Hawaii1.mov",
-"RLMTV_Hawaii2.mov",
-"RLMTV_Ishtar.mov",
-"RLMTV_MacMe.mov",
-"RLMTV_NightCourt.mov",
-"RLMTV_SWHS1.mov",
-"RLMTV_SWHS2.mov",
-"RLMTV_Sasquatch.mov",
-"RLMTV_Shimmy.mov",
-"RLMTV_Twisted1.mov",
-"RLMTV_Twisted2.mov"]
+if __name__ == "__main__":
+    print(PATH)
+    print(os.listdir(PATH))
 
-print(PATH)
-print(os.listdir(PATH))
+    args = sys.argv[1:]
+    # TODO: Clean out movie directory before 
+    wheeldir = 
+    print(args)
 
